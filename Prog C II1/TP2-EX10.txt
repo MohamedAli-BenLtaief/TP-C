@@ -1,0 +1,41 @@
+#include <stdio.h>
+#include <ctype.h>
+
+struct TIME{
+    int h,m,s;  
+};
+
+int verif(char ch[]){
+    int h,m,s;
+    if (isdigit(ch[0])&&isdigit(ch[1])&&isdigit(ch[3])&&isdigit(ch[4])&&isdigit(ch[6])&&isdigit(ch[7])&&(ch[2]==':')&&(ch[5]==':')){
+        h=(ch[0]-48)*10+ch[1]-48;
+        m=(ch[3]-48)*10+ch[4]-48;
+        s=(ch[6]-48)*10+ch[7]-48;
+        if ((h>=0)&&(h<=23)&&(m>=0)&&(m<=59)&&(s>=0)&&(s<=59)){
+            return 1;
+        }
+    }
+    return 0;
+}
+int main(){
+    struct TIME h1,h2,hs;
+    char ch1[8],ch2[8];
+    scanf("%s",ch1);
+    scanf("%s",ch2);
+    if (verif(ch1)&&verif(ch2)){
+        h1.h=(ch1[0]-48)*10+ch1[1]-48;
+        h1.m=(ch1[3]-48)*10+ch1[4]-48;
+        h1.s=(ch1[6]-48)*10+ch1[7]-48;
+        h2.h=(ch2[0]-48)*10+ch2[1]-48;
+        h2.m=(ch2[3]-48)*10+ch2[4]-48;
+        h2.s=(ch2[6]-48)*10+ch2[7]-48;
+        hs.s=(h1.s+h2.s)%60;
+        hs.m=(h1.m+h2.m+(h1.s+h2.s)/60)%60;
+        hs.h=(h1.h+h2.h+(h1.m+h2.m+(h1.s+h2.s)/60)/60)%24;
+        printf("%d:%d:%d",hs.h,hs.m,hs.s);
+    }
+    else{
+        printf("erreur");
+    }
+    return 0;
+}

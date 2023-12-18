@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+float horner(float A[],float x,int n){
+    if (n<0){
+        return 0;
+    }
+    else{
+        return (float)A[n]+x*horner(A,x,n-1);
+    }
+}
+
+int main() {
+    int i,n;
+    float x;
+    scanf("%d",&n);
+    float A[n+1];
+    for (i=0;i<=n;i++){
+        scanf("%f",&A[i]);
+    }
+    scanf("%f",&x);
+    printf("%f",horner(A,x,n));
+    return 0;
+}

@@ -1,0 +1,31 @@
+#include<stdio.h>
+
+struct Point {
+    float x;
+    float y;
+};
+
+void echange(struct Point *point1, struct Point *point2) {
+    struct Point aux;
+    aux = *point1;
+    *point1 = *point2;
+    *point2 = aux;
+}
+
+int main() {
+    struct Point pointA, pointB;
+
+    printf("les coordonnées du 1er point: ");
+    scanf("%f %f", &pointA.x, &pointA.y);
+
+    printf("les coordonées du 2eme point: ");
+    scanf("%f %f", &pointB.x, &pointB.y);
+
+    printf("après une échange: \n");
+    echange(&pointA, &pointB);
+
+    printf("les coordonnées du 1er point deviennent: %f %f\n", pointA.x, pointA.y);
+    printf("les coordonnées du 2eme point deviennent: %f %f\n", pointB.x, pointB.y);
+
+    return 0;
+}

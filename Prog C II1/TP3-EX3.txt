@@ -1,0 +1,62 @@
+a)
+#include<stdio.h>
+
+int main() {
+    int longueur, pal, i;
+    char ch[100];
+    scanf("%s", &ch);
+    
+    longueur = 0;
+    while (ch[longueur] != '\0') {
+        longueur++;
+    }
+    
+    pal = 0;
+    i = 0;
+    while ((pal == 0) && (i < longueur)) {
+        if (ch[i] != ch[longueur - 1 - i])
+            pal = 1;
+        i++;
+    }
+    
+    if (pal == 0)
+        printf("la chaine est palindrome");
+    else
+        printf("la chaine est non palindrome");
+
+    return 0;
+}
+
+
+
+b)
+#include<stdio.h>
+
+int main() {
+    int longueur, pal;
+    char ch[100];
+    scanf("%s", &ch);
+    
+    longueur = 0;
+    while (ch[longueur] != '\0') {
+        longueur++;
+    }
+    
+    char *P1;
+    char *P2;
+    P2 = ch + longueur - 1;
+    pal = 0;
+    for (P1 = ch; (P1 < P2) && (pal == 0); P1++) {
+        if (*P1 != *P2)
+            pal = 1;
+        P2--;
+    }
+    
+    if (pal == 0)
+        printf("la chaine est palindrome");
+    else
+        printf("la chaine est non palindrome");
+
+    return 0;
+}
+

@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char T[501];
+    fgets(T,501,stdin);
+    int i,n=1;
+    for (i=0;i<strlen(T);i++){
+        if (T[i]==' '){
+            n++;
+        }
+    }
+    printf("%d",n);
+    return 0;
+}

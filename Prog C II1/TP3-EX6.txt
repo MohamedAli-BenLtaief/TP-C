@@ -1,0 +1,29 @@
+#include<stdio.h>
+#include<string.h>
+
+int main() {
+    char C;
+    char ch[100];
+    
+    printf("donner le caractere : ");
+    scanf(" %c", &C); // Added a space before %c to consume the newline character
+    printf("donner la chaine : ");
+    fgets(ch, 100, stdin);
+    
+    char *P;
+    P = ch;
+    
+    while (*P != '\0') {
+        if (*P == C) {
+            char *ch1 = P + 1;
+            char *ch2 = P;
+            strcpy(ch2, ch1);
+        } else {
+            P++;
+        }
+    }
+    
+    printf("la chaine apres elimination est %s", ch);
+
+    return 0;
+}

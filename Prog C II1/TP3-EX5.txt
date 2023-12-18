@@ -1,0 +1,22 @@
+#include<stdio.h>
+#include<string.h>
+#include<ctype.h>
+
+int main() {
+    int N;
+    char CH[100];
+    fgets(CH, 100, stdin);
+    char *P;
+    P = CH;
+    N = 0;
+
+    while (*P != '\0') {
+        if (isspace(*P))
+            N += 1;
+        P++;
+    }
+
+    printf("le nombre de mots est: %i ", N);
+
+    return 0;
+}

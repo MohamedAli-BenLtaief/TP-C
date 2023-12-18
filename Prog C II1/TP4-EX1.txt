@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<math.h>
+
+double puissance(int a, double x) {
+    double res;
+    int i;
+    res = 1.0;
+    
+    for(i = 0; i < a; i++) {
+        res *= x;
+    }
+    
+    return res;
+}
+
+double puissance_bis(int a, double x) {
+    double res;
+    res = pow(x, a);
+    return res;
+}
+
+int main() {
+    int N;
+    double X, res1, res2;
+    
+    printf("entrer x: ");
+    scanf("%lf", &X);
+    
+    printf("entrer N: ");
+    scanf("%d", &N);
+    
+    res1 = puissance(N, X);
+    res2 = puissance_bis(N, X);
+    
+    printf("la fonction1 donne le résultat: %lf\n", res1);
+    printf("la fonction2 donne le résultat: %lf\n", res2);
+
+    return 0;
+}

@@ -1,0 +1,44 @@
+#include <stdio.h>
+#include <string.h>
+
+int occ(char ch1[],char ch2[]){
+    int i,j,n1,n2,v;
+    
+    n1=strlen(ch1)-1;
+    n2=strlen(ch2)-1;
+    for (i=0;i<=n1-n2;i++){
+        v=1;
+        for (j=0;j<n2;j++){
+            if (ch1[i+j]!=ch2[j]){
+                v=0;
+                break;
+            }
+        }
+        if (v){
+            return i;
+        }
+    }
+    return -1;
+}
+
+int main() {
+    int n,i,n1,n2;
+    char ch1[500],ch2[500];
+    fgets(ch1,500,stdin);
+    fgets(ch2,500,stdin);
+    n1=strlen(ch1);
+    n2=strlen(ch2);
+    n=occ(ch1,ch2);
+    printf("%d\n",n);
+    if (n>=0){
+        for (i=n+n2;i<n1;i++){
+            ch1[i-n2]=ch1[i];
+        }
+        ch1[n1-n2-1]='\0';
+        printf("%s",ch1);
+    }
+    else{
+        printf("erreur");
+    }
+    return 0;
+}

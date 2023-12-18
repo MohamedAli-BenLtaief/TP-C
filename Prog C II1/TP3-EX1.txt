@@ -1,0 +1,40 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void ajout(int *A, int *B, int *dimA, int *dimB) {
+    int i;
+    for (i = 0; i < *dimB; i++) {
+        A[*dimA + i] = B[i];
+    }
+    *dimA += *dimB;
+}
+
+int main() {
+    int j;
+    int N, M;
+    printf("donner les dimensions initiales:");
+    scanf("%i %i", &N, &M);
+    
+    int *A = (int *)malloc(N * sizeof(int));
+    printf("donner les élements de A:");
+    for (j = 0; j < N; j++) {
+        scanf("%i", &A[j]);
+    }
+    
+    int *B = (int *)malloc(M * sizeof(int));
+    printf("donner les élements de B:");
+    for (j = 0; j < M; j++) {
+        scanf("%i", &B[j]);
+    }
+    
+    ajout(A, B, &N, &M);
+    printf("le nouveau tableau est:");
+    for (j = 0; j < N; j++) {
+        printf("%i ", A[j]);
+    }
+    
+    free(A);
+    free(B);
+    
+    return 0;
+}

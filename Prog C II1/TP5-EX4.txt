@@ -1,0 +1,46 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct cellule{ 
+    int val;
+    struct cellule* suiv;
+};
+
+struct cellule* FUSION_LISTES(struct cellule* tete1, struct cellule* tete2) {
+    struct cellule* pointe1 = tete1;
+    struct cellule* pointe2 = tete2;
+    struct cellule* fusion = NULL;
+    struct cellule* pointe_fusion = NULL;
+
+    while ((tete1 != NULL) || (tete2 != NULL)) {
+        if (pointe1 != NULL) {
+            if (fusion == NULL) {
+                fusion = (struct cellule*)malloc(sizeof(struct cellule));
+                pointe_fusion = fusion;
+            } else {
+                pointe_fusion->suiv = (struct cellule*)malloc(sizeof(struct cellule));
+                pointe_fusion = pointe_fusion->suiv;
+            }
+
+            pointe_fusion->val = pointe1->val;
+            pointe_fusion->suiv = NULL;
+            tete1 = tete1->suiv;
+        }
+
+        if (pointe2 != NULL) {
+            if (fusion == NULL) {
+                fusion = (struct cellule*)malloc(sizeof(struct cellule));
+                pointe_fusion = fusion;
+            } else {
+                pointe_fusion->suiv = (struct cellule*)malloc(sizeof(struct cellule));
+                pointe_fusion = pointe_fusion->suiv;
+            }
+
+            pointe_fusion->val = pointe2->val;
+            pointe_fusion->suiv = NULL;
+            tete2 = tete2->suiv;
+        }
+    }
+
+    return fusion;
+}

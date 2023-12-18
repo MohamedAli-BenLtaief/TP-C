@@ -1,0 +1,13 @@
+#include <stdio.h>
+
+int main() {
+    int n,u1=1,u2=1,un,i;
+    scanf("%d",&n);
+    for (i=1;i<=n-2;i++){
+        un=u1+u2;
+        u1=u2;
+        u2=un;
+    }
+    printf("%d",u2);
+    return 0;
+}

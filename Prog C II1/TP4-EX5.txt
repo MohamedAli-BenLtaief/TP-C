@@ -1,0 +1,35 @@
+#include<stdio.h>
+
+long CH_ENTIER(char *ch) {
+    long res;
+    int signe;
+    signe = 1;
+    res = 0;
+
+    if (*ch == '-') {
+        signe = -1;
+        ch++;
+    }
+
+    while ((*ch >= '0') && (*ch <= '9')) {
+        res = res * 10 + (*ch - '0');
+        ch++;
+    }
+
+    res *= signe; 
+    return res;
+}
+
+int main() {
+    int i;
+    long resultat;
+    char chaine[100];
+
+    printf("donner la chaine à convertir\n");
+    fgets(chaine, 100, stdin);
+
+    resultat = CH_ENTIER(chaine);
+    printf("Après la conversion : %ld\n", resultat);
+
+    return 0;
+}

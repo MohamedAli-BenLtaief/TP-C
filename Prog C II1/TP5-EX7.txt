@@ -1,0 +1,28 @@
+a)
+#include<stdio.h>
+
+struct Carte {
+    int valeur;
+    char couleur; 
+};
+
+struct Pile {
+    struct Carte cartes[52];
+    int sommet;
+};
+
+struct Jeu {
+    struct Pile talon;
+    struct Pile joueurs[2];
+};
+
+b)
+void distribution(struct Pile *paquet, struct Jeu *jeu) {
+    int i;
+    for (i = 0; i < 52; i++) {
+        if (i % 2 == 0)
+            push(&jeu->joueurs[0], pop(paquet)); 
+        else
+            push(&jeu->joueurs[1], pop(paquet)); 
+    }
+}

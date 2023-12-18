@@ -1,0 +1,41 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+void elimination(int *A, int *taille, int occ) {
+    int i;
+    int *P1;
+    P1 = A;
+    int *P2;
+    P2 = A;
+    
+    for(i = 0; i < *taille; i++) {
+        *P2 = *(P1 + i);
+        if (*P2 != occ)
+            P2++;
+    }
+    
+    *taille = P2 - A;
+}
+
+int main() {
+    int j, X, taille;
+    printf("donner la taille du tableau");
+    scanf("%i", &taille);
+    int A[100];
+    
+    printf("donner les élements de A: ");
+    for(j = 0; j < taille; j++) {
+        scanf("%i", &A[j]);
+    }
+    
+    printf("donner la valeur:");
+    scanf("%i", &X);
+    
+    elimination(A, &taille, X);
+    printf("le nouveau tableau est:");
+    for (j = 0; j < taille; j++) {
+        printf("%i ", A[j]);
+    }
+    
+    return 0;
+}

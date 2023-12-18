@@ -1,0 +1,17 @@
+#include<stdio.h>
+
+int main() {
+    char ch[100];
+    printf("donner la chaine:");
+    fgets(ch, 100, stdin);
+    char *P1;
+    P1 = ch;
+    
+    while (*P1 != '\0') {
+        P1++;
+    }
+    
+    printf("la longeur de la chaine est: %i", P1 - ch - 1);
+
+    return 0;
+}

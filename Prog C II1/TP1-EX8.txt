@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int i,c=0,v=0;
+    char Str[501];
+    char chc[]="bcdfghjklmnpqrstvwxz",chv[]="aeiouy";
+    fgets(Str,501,stdin);
+    for (i=0;i<strlen(Str)-1;i++){
+        if (strchr(chv,Str[i])){
+            v++;
+        }
+        else if (strchr(chc,Str[i])){
+            c++;
+        }
+    }
+    printf("nombre de voyelles est: %d et nombre de consonnes est: %d",v,c);
+    return 0;
+}

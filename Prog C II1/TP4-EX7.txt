@@ -1,0 +1,54 @@
+#include<stdio.h>
+
+void MULTI_2_MATRICES(int mat1[30][30], int mat2[30][30], int mat3[30][30], int N, int M, int P) {
+    int i, j, k;
+    for (i = 0; i < N; i++) {
+        for (j = 0; j < P; j++) {
+            mat3[i][j] = 0;
+            for (k = 0; k < M; k++) {
+                mat3[i][j] += mat1[i][k] * mat2[k][j];
+            }
+        }
+    }
+}
+
+int main() {
+    int i, j;
+    int l1, c1, c2;
+    
+    printf("donner les dimensions des matrices: ");
+    scanf("%i %i %i", &l1, &c1, &c2);
+    
+    int mat1[l1][c1];
+    
+    printf("    MAT1    :\n");
+    for (i = 0; i < l1; i++) {
+        for (j = 0; j < c1; j++) {
+            printf("mat1[%i][%i]= ", i, j);
+            scanf("%i", &mat1[i][j]);
+        }
+    } 
+    
+    int mat2[c1][c2];
+    
+    printf("    MAT2    :\n");
+    for (i = 0; i < c1; i++) {
+        for (j = 0; j < c2; j++) {
+            printf("mat2[%i][%i]= ", i, j);
+            scanf("%i", &mat2[i][j]);
+        }
+    }
+    
+    int mat3[l1][c2];
+    MULTI_2_MATRICES(mat1, mat2, mat3, l1, c1, c2);
+    
+    printf("     RESULTAT:\n");
+    for (i = 0; i < l1; i++) {
+        for (j = 0; j < c2; j++) {
+            printf("%i  ", mat3[i][j]);
+        }
+        printf("\n");
+    }
+    
+    return 0;
+}

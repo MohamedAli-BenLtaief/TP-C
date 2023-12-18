@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <math.h>
+
+int main() {
+    int a,b,c,d;
+    scanf("%d %d %d",&a,&b,&c);
+    d=(float)b*b-4*a*c;
+    if (d<0){
+        printf("pas de solutions réelles");
+    }
+    else if (d==0){
+        printf("x = %f",(float)(-b)/(2*a));
+    }
+    else{
+        printf("x1 = %f et x2 = %f",(float)(-b+sqrt(d))/(2*a),(float)(-b-sqrt(d))/(2*a));
+    }
+    return 0;
+}

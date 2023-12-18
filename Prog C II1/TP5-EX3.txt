@@ -1,0 +1,65 @@
+a)
+
+#include<stdio.h>
+#include<stdlib.h>
+
+struct cellule {
+    int val;
+    struct cellule* suiv;
+};
+
+struct cellule* SuppressioneElt(struct cellule* tete, int elt) {
+    struct cellule* pointe = tete;
+    struct cellule* precedent = NULL;
+
+    while ((pointe != NULL) && ((pointe->val) != elt)) {
+        pointe = pointe->suiv;
+        precedent = pointe;
+    }
+
+    if (pointe == NULL)
+        return tete;
+
+    if (precedent == NULL)
+        tete = tete->suiv;
+    else
+        precedent->suiv = pointe->suiv;
+
+    free(pointe);
+    return tete;
+}
+
+
+b)
+#include<stdio.h>
+#include<stdlib.h>
+
+struct cellule {
+    int val;
+    struct cellule* suiv;
+};
+
+struct cellule* SupprOccurrences(struct cellule* tete, int elt) {
+    struct cellule* pointe = tete;
+    struct cellule* precedent = NULL;
+
+    while (pointe != NULL) {
+        if ((pointe->val) == elt) {
+            if (precedent == NULL) {
+                tete = pointe->suiv;
+                free(pointe);
+                pointe = tete;
+            } else {
+                precedent->suiv = pointe->suiv;
+                free(pointe);
+                pointe = precedent->suiv;
+            }
+        } else {
+            precedent = pointe;
+            pointe = pointe->suiv;
+        }
+    }
+
+    return tete;
+}
+

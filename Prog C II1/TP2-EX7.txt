@@ -1,0 +1,26 @@
+#include <stdio.h>
+#include <string.h>
+#include <ctype.h>
+
+int main() {
+    char N[21];
+    int ok=1,s=0,i,n;
+    fgets(N,21,stdin);
+    n=strlen(N)-1;
+    for (i=0;i<n;i++){
+        if (!(isdigit(N[i]))){
+            ok=0;
+            break;
+        }
+    }
+    if (ok){
+        for (i=0;i<n;i++){
+            s=s*10+N[i]-48;
+        }
+        printf("%d",s);
+    }
+    else{
+        printf("erreur");
+    }
+    return 0;
+}

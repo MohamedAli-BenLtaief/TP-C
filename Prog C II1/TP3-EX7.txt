@@ -1,0 +1,36 @@
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+
+int main() {
+    char *MOT[10];
+    char aux[50];
+    int i, j;
+
+    for(i = 0; i < 10; i++) {
+        printf("donner le mot %i : ", i + 1);
+        scanf("%s", &aux);
+        MOT[i] = (char*)malloc(sizeof(aux));
+        strcpy(MOT[i], aux);
+    }
+
+    for(i = 0; i < 10; i++) {
+        for(j = 0; j < 10; j++) {
+            if(strcmp(MOT[i], MOT[j]) > 0) {
+                strcpy(aux, MOT[i]);
+                strcpy(MOT[i], MOT[j]);
+                strcpy(MOT[j], aux);
+            }
+        }
+    }
+
+    for(i = 0; i < 10; i++) {
+        printf("%s\n", MOT[i]);
+        while (getchar() != '\n') {
+            ;    
+        }
+        free(MOT[i]);
+    }
+
+    return 0;
+}

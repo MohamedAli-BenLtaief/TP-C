@@ -1,0 +1,62 @@
+#include<stdio.h>
+
+void PERMUTER(int *a, int *b) {
+    int aux;
+    aux = *a;
+    *a = *b;
+    *b = aux;
+}
+
+int TRANSPO_MAT(int MAT[][10], int L, int LMAX, int C, int CMAX) {
+    int i, j;
+    if ((L < LMAX) && (C < CMAX)) {
+        for (i = 0; i < L; i++) {
+            for (j = i + 1; j < C; j++) {
+                PERMUTER(&MAT[i][j], &MAT[j][i]);
+            }
+        }
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int main() {
+    int test;
+    int L, C, LMAX, CMAX, i, j;
+    int MAT[10][10];
+
+    printf("donner le nombre de lignes: ");
+    scanf("%i", &L);
+
+    printf("donner le nombre de colonnes: ");
+    scanf("%i", &C);
+
+    for (i = 0; i < L; i++) {
+        for (j = 0; j < C; j++) {
+            scanf("%i", &MAT[i][j]);
+        }
+    }
+
+    printf("donner le nombre de lignes maximal : ");
+    scanf("%i", &LMAX);
+
+    printf("donner le nombre de colonnes maximal : ");
+    scanf("%i", &CMAX);
+
+    test = TRANSPO_MAT(MAT, L, LMAX, C, CMAX);
+
+    if (test == 1) {
+        printf("transposition réussi\n");
+        for (i = 0; i < L; i++) {
+            for (j = 0; j < C; j++) {
+                printf("%i ", MAT[i][j]);
+            }
+            printf("\n");
+        }
+    } else {
+        printf("transposition impossible");
+    }
+
+    return 0;
+}

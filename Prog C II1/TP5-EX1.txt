@@ -1,0 +1,39 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct cellule { 
+    int val;
+    struct cellule *suiv;
+};
+
+struct cellule* AjoutElt(struct cellule* tete, int valeur) {
+    struct cellule* nvcellule = (struct cellule*)malloc(sizeof(struct cellule));
+    nvcellule->val = valeur;
+    nvcellule->suiv = tete;
+    return nvcellule;
+}
+
+int sommeliste(struct cellule* tete) {
+    int s = 0;
+    
+    while (tete != NULL) {
+        s += tete->val;
+        tete = tete->suiv;
+    }
+    
+    return s;
+}
+
+int main() {
+    int somme;
+    struct cellule* liste = NULL;
+    
+    liste = AjoutElt(liste, 2);
+    liste = AjoutElt(liste, 7);
+    liste = AjoutElt(liste, 20);
+    
+    somme = sommeliste(liste);
+    printf("la somme de la liste est: %i", somme);
+
+    return 0;
+}

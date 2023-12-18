@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <string.h>
+int main(){
+    int n;
+    char V[20];
+    fgets(V,20,stdin);
+    n=strlen(V)-3;
+    V[n]='\0';
+    printf("je %se\n",V);
+    printf("tu %ses\n",V);
+    printf("il %se\n",V);
+    printf("nous %sons\n",V);
+    printf("vous %sez\n",V);
+    printf("ils %sent\n",V);
+    return 0;
+}

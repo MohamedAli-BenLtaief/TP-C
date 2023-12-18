@@ -1,0 +1,27 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    int i,cs,cl,ms,ml;
+    char T[500];
+    scanf("%s",T);
+    cs=0;
+    cl=0;
+    ms=0;
+    ml=0;
+    for (i=0;i<strlen(T);i++){
+        if (T[i]=='1'){
+            cs=i+1;
+            cl=0;
+        }
+        else{
+            cl++;
+            if (cl>ml){
+                ml=cl;
+                ms=cs;
+            }
+        }
+    }
+    printf("%d",ms);
+    return 0;
+}

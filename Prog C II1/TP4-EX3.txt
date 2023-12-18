@@ -1,0 +1,19 @@
+#include<stdio.h>
+
+void majuscule(char *chaine) {
+    while (*chaine != '\0') {
+        if ((*chaine >= 'a') && (*chaine <= 'z'))
+            *chaine = *chaine - 32;
+        chaine++;
+    }
+}
+
+int main() {
+    char ch[100];
+    printf("donner la chaine: ");
+    fgets(ch, 100, stdin);
+    majuscule(ch);
+    printf("la nouvelle chaine est: %s", ch);
+
+    return 0;
+}

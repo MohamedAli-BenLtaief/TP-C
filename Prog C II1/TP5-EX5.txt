@@ -1,0 +1,68 @@
+1)
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Pile {
+    int table[50];
+    int sommet;
+};
+
+int Recherche(struct Pile* pile, int t_element) {
+    int nombrex, s;
+    struct Pile aux;
+    aux.sommet = -1;
+    nombrex = 0;
+
+    while (!is_empty(pile)) {
+        s = pop(pile);
+        push(&aux, s);
+        nombrex++;
+        
+        if (s == t_element) {
+            while (!is_empty(&aux)) {
+                push(pile, pop(&aux));
+            }
+            return nombrex;
+        }
+    }
+    
+    while (!estVide(&aux)) {
+        push(pile, pop(&aux));
+    }
+}
+
+2)
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Pile {
+    int table[50];
+    int sommet;
+};
+
+void copier_pile(struct Pile* pile1, const struct Pile* pile2) {
+    int i;
+    pile1->sommet = -1;
+    
+    for (i = 0; i <= pile2->sommet; i++) {
+        push(pile1, pile2->table[i]);
+    }
+}
+
+3)
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Pile {
+    int table[50];
+    int sommet;
+};
+
+void renverser_pile(struct Pile* pile1, const struct Pile* pile2) {
+    int i;
+    pile1->sommet = -1;
+    
+    for (i = pile2->sommet; i = 0; i--) {
+        push(pile1, pile2->table[i]);
+    }
+}

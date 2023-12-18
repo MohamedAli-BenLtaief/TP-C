@@ -1,0 +1,55 @@
+a)
+#include<stdio.h>
+#include<stdlib.h>
+
+#define INTERVALLE_MAX 300
+#define DUREE_TRAITEMENT_MAX 120
+
+struct client {
+    int num;
+    int d_arriv;
+    int attente;
+    int d_fint;
+    struct client* suiv;
+};
+
+struct file {
+    struct client *front;
+    struct client *rear;
+};
+
+b)
+#include<stdio.h>
+#include<stdlib.h>
+
+#define INTERVALLE_MAX 300
+#define DUREE_TRAITEMENT_MAX 120
+
+struct file CreerListeClients(int nbre) {
+    int date_update, i;
+    struct file clients;
+    clients.front = NULL;
+    clients.rear = NULL;
+    struct client* nouveau;
+
+    date_update = 8 * 60 * 60;
+
+    for (i = 0; i < nbre; i++) {
+        nouveau = (struct client*)malloc(sizeof(struct client));
+        nouveau->num = i + 1;
+        nouveau->d_arriv = date_update;
+        nouveau->attente = rand() % INTERVALLE_MAX;
+        nouveau->d_fint = date_update + nouveau->attente;
+        nouveau->suiv = NULL;
+        date_update = date_update + nouveau->attente;
+
+        if (clients.front == NULL) {
+            clients.front = nouveau;
+            clients.rear = nouveau;
+        } else {
+            clients.rear->suiv = nouveau;
+            clients.rear = nouveau;
+        }
+    }
+    return clients;
+}

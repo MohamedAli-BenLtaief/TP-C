@@ -1,0 +1,21 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct cellule{ 
+    int val;
+    struct cellule *suiv;
+};
+
+struct cellule* Recherche(struct cellule* tete, int n) {
+    struct cellule *pointeur;
+    pointeur = tete;
+
+    while (pointeur != NULL) {
+        if (pointeur->val == n)
+            return pointeur;
+        else 
+            pointeur = pointeur->suiv;
+    }
+    
+    return NULL;
+}
